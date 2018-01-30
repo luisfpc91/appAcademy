@@ -1,0 +1,99 @@
+<div id="page-wrapper" class="color-pages">
+    <div>
+        <div class="col-lg-12 no-padding">
+            <div class="header-in">
+                <div class="text-muted item-menu">
+                    Clases
+                </div>
+                <div>
+                    <b>{{session.data_session.data.name}}</b>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row-relative">
+        <div class="col-lg-8  full-height">
+            <h2 class="text-center
+            ">Clases</h2>
+            <div class=" text-right">
+                <button class="btn btn-success" ng-click="open_newitem()">Agregar</button>
+            </div>
+
+            <hr>
+            <div class="list-group add_20_margin" >
+                <a href="javascript:" ng-click="profile(item.id)" class="list-group-item list-group-item-action flex-column align-items-start col-sm-12 " ng-repeat="item in response.data" ng-if="level != 'admin' ? item.id_cat == cat_user : item.id_cat != cat_user">
+                    <div class="col-sm-1">
+                        <img ng-src="{{item.image.path}}" alt="" class="img-circle" ng-show="item.image.path">
+                        <img ng-src="assets/icons/default-pupil-profile.png" alt="" class="img-circle" ng-show="!item.image.path">
+                    </div>
+                    <div class="col-sm-11 class_item">
+                        <p class="mb-1 letra">{{item.title}}</p>
+                        <small class="mb-1 small_user margin_left_2">Fecha de inicio: {{item.start_at}}</small>
+                    </div>
+
+                </a>
+            </div>
+        </div>
+        <div ng-show="step.first" class="col-lg-4 add_20_padding full-height tab-profile-user text-center">
+            <h4 class="header-gray">Debes seleccionar un usuario.</h4>
+            <img src="assets/icons/worker.svg" class="profile-not add_20_padding" alt="">
+        </div>
+        <div ng-show="step.second" class="col-lg-4 add_20_padding full-height tab-profile-user">
+            <h2 class="no-margin header-gray">Perfil</h2>
+            <div class="add_20_margin">
+                <div class="col-sm-12 text-center">
+                    <div class="col-sm-6">
+                        <img ng-src="{{item_form.image.path}}" class="img-circle-100" alt="" ng-show="item_form.image.path">
+                        <img class="img-circle-100" alt=""
+                             ng-src="assets/icons/default-pupil-profile.png" ng-show="!item_form.image.path">
+                    </div>
+                    <div class="col-sm-6 text-left">
+                        <label for="form_upload">Actualizar imagen</label>
+                        <div class="button btn btn-default" id="form_upload" ngf-select="upload_put($files)" ngf-multiple="true">Examinar...</div>
+                        <p class="text-muted">Tamaño maximo permitido 2MB</p>
+                    </div>
+                </div>
+                <div class="col-sm-12 add_20_padding">
+                    <uib-tabset active="active">
+                        <uib-tab index="0" heading="Info">
+                            <form class="add_20_padding" ng-submit="update_item()">
+                                <div class="form-group">
+                                    <label for="title">Título:</label>
+                                    <input type="text" class="form-control" ng-model="item_form.title" id="title" />
+                                    <p class="text-muted">Ingresa el título de la clase.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Descripción:</label>
+                                    <textarea id="description" type="text" class="form-control" ng-model="item_form.description"  ></textarea>
+                                    <p class="text-muted">Ingresa la descripción de la clase.</p>
+                                </div>
+                                <div class="form-group" ng-show="level == 'admin'">
+                                    <label for="id_cat">Categoria:</label>
+                                    <select id="id_cat" ng-model="item_form.id_cat" class="form-control" required >
+                                        <option ng-repeat="cat in cat.data" ng-show="level != 'admin' ? item.id == cat_user : item.id != cat_user" value="{{item.id}}">{{item.name}}</option>
+                                    </select>
+                                    <p class="text-muted">Ingresa la categoria a la que pertenece la clase.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="start_at">Fecha de Inicio:</label>
+                                    <input id="start_at" type="date" class="form-control" ng-model="item_form.start_at" />
+                                    <p class="text-muted">Ingresa la fecha de inicio de la clase.</p>
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary pull-right" style="margin-left:5px;">Editar</button>
+                                    <button type="button" class="btn btn-danger pull-right" ng-click="delete(item_form)" >Eliminar</button>
+                                    <span class="clearfix"></span>
+                                </div>    
+                            </form>
+                        </uib-tab>      
+                    </uib-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

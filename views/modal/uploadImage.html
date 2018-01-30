@@ -1,0 +1,65 @@
+<div class="modal-content">
+        <div class="modal-body">
+            <div>
+                <h3 class="modal-title text-center">Cargar Archivos</h3>
+            </div>
+            <hr>
+             <uib-tabset >                
+                <uib-tab index="0" heading="Imagenes o PDF" ng-click="type(1)">
+                    <form ng-submit="save(value)">
+                        <div class="col-sm-12 text-center form-group margin-top-15">
+                            <div class="col-sm-12">
+                                <div class="dropzone" options="dzOptions" callbacks="dzCallbacks" methods="dzMethods" ng-dropzone></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nombre del archivo:</label>
+                            <input class="form-control" id="name" ng-model="i.name" placeholder="Nombre" required />
+                        </div>
+                        <div class="form-group" ng-show="level == 'admin'">
+                            <label for="cat">Categoria:</label>
+                            <select class="form-control" id="cat" ng-model="i.id_categories" required>
+                                <option ng-repeat="item in response" ng-show="level != 'admin' ? item.id == cat_user : item.id != cat_user"  value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="type">Tipo de archivo</label>
+                            <select id="type" class="form-control" ng-model="i.type">
+                                <option value="img">Imagen</option>
+                                <option value="pdf">PDF</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" ng-click="closeThisDialog(0)" data-dismiss="modal">Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-primary">{{ value }}</button>
+                        </div>
+                    </form>    
+                </uib-tab>
+                <uib-tab index="1" heading="YouTube" ng-click="type(2)" >
+                    <form ng-submit="save(value)">
+                        <div class="form-group margin-top-15">
+                            <label for="url">Url del video:</label>
+                            <input class="form-control" type="url" id="url" ng-model="y.url_youtube" placeholder="Url" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nombre del video:</label>
+                            <input class="form-control" id="name" ng-model="y.name" placeholder="Nombre" required/>
+                        </div>
+                        <div class="form-group" ng-show="level == 'admin'">
+                            <label for="cat">Categoria:</label>
+                            <select class="form-control" id="cat" ng-model="y.id_categories" required>
+                                <option ng-repeat="item in response" ng-show="level != 'admin' ? item.id == cat_user : item.id != cat_user"  value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" ng-click="closeThisDialog(0)" data-dismiss="modal">Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-primary">{{ value }}</button>
+                        </div>
+                    </form>    
+                </uib-tab>
+            </uib-tabset>        
+        </div>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+<div class="modal-content">
+    <form ng-submit="create()">
+        <div class="modal-body">
+            <div>
+                <h3 class="modal-title text-center">Notificación</h3>
+            </div>
+            <hr/>  
+            <div class="form-group">
+                <label for="title">Título:</label>
+                <input id="title" type="text" ng-model="form.title" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="Título" required maxlength="50" />
+                <p class="text-muted">Tiene un máximo de 50 caracteres</p>
+            </div>
+            <div class="form-group">
+                <label for="body">Mensaje:</label>
+                <textarea id="body" name="body" ng-model="form.body" id="description" cols="30" rows="3" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="Mensaje" required maxlength="100"></textarea>
+                <p class="text-muted">Tiene un máximo de 100 caracteres</p>
+            </div> 
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="closeThisDialog(0)" data-dismiss="modal">Cerrar
+                </button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+
+    </form>
+</div>

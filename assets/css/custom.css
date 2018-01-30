@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
+body{
+	background-color: #f3f3f3;
+	font-family: 'Open Sans', sans-serif;
+}
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+	#page-wrapper{
+		margin:0px !important;
+	}
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+		
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	.table-bordered>tbody>tr>td {
+		border: 0px !important;
+		border-bottom: solid 1px #e0e0e0 !important;
+	}
+}
+.rerror-empty{
+    height: 300px;
+    background: url(icons/empty-white-box.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80px;
+}
+.add-margin-10{
+	margin:10px !important;
+}
+.dataTables_paginate{
+	margin-top:20px !important;
+}
+.navbar{
+	margin-bottom: 0px !important;
+}
+table{
+	border: solid 1px #ebebeb !important;
+}
+.over-loading{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(245, 245, 245, 0.6);
+    z-index: 9999;
+}
+.over-loading .in{
+	width: 400px;
+	margin-top: 15%;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+}
+.panel-order-hg{
+	height: 240px !important;
+}
+.panel-order-hg .panel-heading{
+	height: 100px !important;
+}
+.panel-order-hg .panel-footer{
+	height: 138px !important;
+}
+.alig-img{
+    width: 70px;
+    margin-top: 20px;
+}
+.navbar-default {
+	background: red; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left, #3343b7 , #5b11bd); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right,#3343b7 , #5b11bd); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right,#3343b7 , #5b11bd); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #3343b7 , #5b11bd); /* Standard syntax */
+	border-bottom: solid 1px #999;
+}
+.navbar-default  a{
+	color:white !important;
+}
+.nav>li>a:focus, .nav>li>a:hover{
+	background-color: #54a556;
+	-webkit-transition: background-color ease-out .2s;
+	-moz-transition: background-color ease-out .2s;
+	-o-transition: background-color ease-out .2s;
+	transition: background-color ease-out .2s;
+}
+.sidebar{
+	margin-top: 0 !important;
+    width: 13% !important;
+}
+.logo-canva{
+	height: 50px;
+	padding: 10px 10px;
+	width: 250px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 25px;
+	color: white;
+}
+#page-wrapper{
+	background-color: white !important;
+	border-left:1px solid #e4e4e4 !important;
+	position: absolute;
+	padding:0 !important;
+    margin:0 0 0 13% !important;
+    width: 87%;
+	height: 100%;
+}
+li.header {
+	background: #fbfbfb;
+	padding: 15px 10px;
+	height:55px;
+}
+li.header p{
+	font-size: 16px;
+	font-weight:600;
+}
+.no-margin{
+	margin: 0 !important;
+}
+.no-padding{
+	padding: 0 !important;
+}
+.nav>li>a:focus, .nav>li>a:hover{
+	color: #9c9c9c !important;
+	border: 0 !important;
+	background-color: #e6e6e6 !important;
+	-webkit-transition: background-color ease-out .2s;
+	-moz-transition: background-color ease-out .2s;
+	-o-transition: background-color ease-out .2s;
+	transition: background-color ease-out .2s;
+	border-left: solid 4px #3d3ab9 !important;
+}
+.sidebar-nav .nav>li>a{
+	border-left:solid 4px #a19eff;
+	background-color: #f3f3f3;
+	color:#777777;
+	font-weight: 300;
+}
+.header-in{
+	background: #eaeaea;
+	padding: 5px 5px 5px 50px;
+	height: 55px;
+	border-bottom: solid 1px #dddddd;
+}
+.header-in .item-menu::after {
+	content: "/";
+	color: #ccc;
+}
+.add_20_padding{
+	padding-top: 20px !important;
+}
+.add_20_margin{
+	margin-top: 20px !important;
+}
+.row-relative{
+	position: relative;
+	height:100%;
+}
+.full-height{
+	height:100%;
+}
+.full-width{
+	width:100%;
+}
+.list-group-item{
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
+	border-bottom: 1px solid #f4f4f4 !important;
+	border-left: solid 3px #dbecfb !important;
+	margin-bottom: 3px !important;
+	border-right:0 !important;
+	border-top:0 !important;
+}
+.list-group-item .img-circle{
+	width: 65px !important;
+	height:65px !important;
+}
+li.list-group-item:hover {
+	background: #f5f5f5 !important;
+	border-left: solid 3px #337ab7 !important;
+}
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
+	color: #555;
+	background-color: #c1e2e8;
+}
+.tab-profile-user{
+	border-left:solid 1px #dddddd;
+}
+.header-gray{
+	color: #555;
+}
+.img-circle-100{
+	width: 150px;
+	height: 150px;
+	border-radius: 100px;
+	border: solid 1px #eaeaea;
+}
+.nav-tabs>li>a{
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+.tab-profile-user .form-group label{
+	color: #555555 !important;
+	font-weight: 500 !important;
+}
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	margin: 10px;
+}
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.profile-not{
+	width: 35%;
+	opacity: .7;
+}
+.modal-content{
+	-webkit-border-radius: 3px !important;
+	-moz-border-radius: 3px !important;
+	border-radius: 3px !important;
+}
+
+.add_10_padding_top{
+	padding-top: 10px;
+}
+
+.edit{
+	color:green;
+	margin-top: -4px;
+	cursor:pointer;
+	display: block !important; 
+}
+.delete{
+	color:red;
+	cursor:pointer; 
+}
+.add_20_padding{
+	padding-bottom: 10px;
+}
+.letra{
+	font-size: 140%;
+	margin-left: 2%;
+}
+.margin_top{
+	margin-top: -3%;
+}
+.margin_top_categories{
+	margin-top: -5%;
+}
+.sidebar ul li {
+	border-bottom: 1px solid #efefef !important;
+}
+.padding-home{
+	padding-top: 3%;
+}
+.small_user{
+	font-size: 95% !important;
+}
+.margin_left_user{
+	margin-left: 9% !important;
+}
+.margin_left_2{
+	margin-left: 2%;
+}
+.width_home{
+	height: 480px;
+}
+.height_img{
+	height: 150px;
+}
+.home-color{
+	background-color: white;
+}
+.color-pages{
+	height: auto !important;
+	background-color:white !important;
+}
+.home-scroll{
+	overflow:scroll !important;
+}
+.tamano{
+    height: 150px;
+    width: 150px;
+}

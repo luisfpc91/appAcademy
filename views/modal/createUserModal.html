@@ -1,0 +1,77 @@
+<div class="modal-content">
+    <form ng-submit="create()">
+        <div class="modal-body">
+            <div>
+                <h3 class="modal-title text-center">Usuario</h3>
+            </div>
+            <hr>
+            <div class="col-sm-12 text-center form-group">
+                <div class="col-sm-6">
+                    <img class="img-circle-100" alt=""
+                         ng-src="{{newuser.avatar}}" ng-show="newuser.avatar">
+                    <img class="img-circle-100" alt=""
+                         ng-src="assets/icons/default-pupil-profile.png" ng-show="!newuser.avatar">
+                </div>
+                <div class="col-sm-6 text-left">
+                    <label for="form_upload">Agregar imagen</label>
+                    <form action="" id="form_upload" class="ng-pristine ng-valid">
+                        <div class="button btn btn-default" ngf-select="upload($files)" ngf-multiple="true" class="upload">Examinar...</div>
+                        <p class="text-muted">Tamaño maximo permitido 2MB</p>
+                    </form>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" >Nombre:</label>
+                <input id="name" type="text" class="form-control" ng-model="newuser.name" name="name" placeholder="Nombre" required />
+            </div>
+            <div class="form-group">
+                <label for="last_name">Apellido:</label>
+                <input id="last_name" type="text" class="form-control" ng-model="newuser.last_name" name="last_name" placeholder="Apellido" required />
+            </div>
+            <div class="form-group">
+                <label for="uuid">DNI:</label>
+                <input type="text" class="form-control" ng-model="newuser.uuid" name="uuid" placeholder="DNI"  />
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input id="email" type="email" class="form-control" ng-model="newuser.email" name="email" placeholder="E-mail" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input id="password" type="password" class="form-control" ng-model="newuser.password" name="password" placeholder="Contraseña" required />
+            </div>
+            <div class="form-group">
+                <label for="phone">Teléfono:</label>
+                <input id="phone" type="text" class="form-control" ng-model="newuser.phone" name="phone" placeholder="Teléfono"  />
+            </div>
+            <div class="form-group">
+                <label for="address">Dirección:</label>
+                <textarea id="address" type="text" class="form-control" ng-model="newuser.address" name="address" placeholder="Dirección"  ></textarea>
+            </div>
+            <div class="form-group">
+                <label for="bod">Fecha de Nacimiento:</label>
+                <input id="bod" type="date" class="form-control" ng-model="newuser.bod" name="bod" placeholder="Fecha de nacimiento"  />
+            </div>            
+            <div class="form-group">
+                <label for="level">Nivel:</label>
+                <select ng-model="newuser.level" class="form-control" >
+                    <option value="user">Alumno</option>
+                    <option value="manager">Profesor</option>
+                </select>
+            </div>
+            <div class="form-group" ng-show="level == 'admin'">
+                <label for="categories">Categorias:</label>
+                <select id="categories" class="form-control" ng-model="newuser.categorie" required>
+                    <option ng-repeat="item in cat.data" ng-show="level != 'admin' ? item.id == cat_user : item.id != cat_user" value="{{item.id}}">{{item.name}}</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="closeThisDialog(0)"
+                        data-dismiss="modal">Cerrar
+                </button>
+                <button type="submit" class="btn btn-primary">{{button}}</button>
+            </div>
+        </div>
+
+    </form>
+</div>

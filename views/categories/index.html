@@ -1,0 +1,87 @@
+<div id="page-wrapper" class="color-pages">
+   <div>
+        <div class="col-lg-12 no-padding">
+            <div class="header-in">
+                <div class="text-muted item-menu">
+                    Categorias
+                </div>
+                <div>
+                    <b>{{session.data_session.data.name}}</b>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row-relative">
+        <div class="col-lg-8  full-height">
+            <h2 class="text-center
+            ">Categorias</h2>
+            <div class=" text-right">
+                <button class="btn btn-success" ng-click="open_newuser()">Agregar</button>
+            </div>
+
+            <hr>
+            <div class="list-group add_20_margin" >
+                <a href="javascript:" ng-click="profile(cat.id)" class="list-group-item list-group-item-action flex-column align-items-start col-sm-12 " ng-repeat="cat in response.data">
+                    <!--<div class="col-sm-1">
+                        <img ng-src="{{cat.avatar}}" alt="" class="img-circle" ng-show="cat.avatar">
+                        <img ng-src="assets/icons/default-pupil-profile.png" alt="" class="img-circle" ng-show="!cat.avatar">
+                    </div>-->
+                    <div class="col-sm-11">
+                        <p class="mb-1 letra">{{cat.name}}</p>
+                       
+                    </div>
+
+                </a>
+            </div>
+        </div>
+        <div ng-show="step.first" class="col-lg-4 add_20_padding full-height tab-profile-user text-center">
+            <h4 class="header-gray">Debes seleccionar una categoria.</h4>
+            <img src="assets/icons/categorie.svg" class="profile-not add_20_padding" alt="">
+        </div>
+        <div ng-show="step.second" class="col-lg-4 add_20_padding full-height tab-profile-user">
+            <h2 class="no-margin header-gray">Info</h2>
+            <div class="add_20_margin">
+                <!--<div class="col-sm-12 text-center">
+                    <div class="col-sm-6">
+                        <img ng-src="{{profile_form.avatar}}" class="img-circle-100" alt="" ng-show="profile_form.avatar">
+                        <img class="img-circle-100" alt=""
+                             ng-src="assets/icons/default-pupil-profile.png" ng-show="!profile_form.avatar">
+                    </div>
+                    <div class="col-sm-6 text-left">
+                        <label for="form_upload">Actualizar imagen</label>
+                        <div class="button btn btn-default" id="form_upload" ngf-select="upload($files)" ngf-multiple="true">Examinar...</div>
+                        <p class="text-muted">Tamaño maximo permitido 2MB</p>
+                    </div>
+                </div>-->
+                <div class="col-sm-12 add_20_padding">
+                    <uib-tabset active="active">
+                        <uib-tab index="0" heading="Info">
+                            <form class="add_20_padding" ng-submit="update_cat()">
+                                <div class="form-group">
+                                    <label for="name">Nombre:</label>
+                                    <input type="text" class="form-control" ng-model="profile_form.name" id="name" />
+                                    <p class="text-muted">Ingresa el nombre de la categoria, el cual sera usado en todo el sistema.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Descripción:</label>
+                                    <input type="text" class="form-control" ng-model="profile_form.description" id="description" />
+                                    <p class="text-muted">Ingresa la descripción de la categoria.</p>
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary pull-right" style="margin-left:5px;">Editar</button>
+                                    <button type="button" class="btn btn-danger pull-right" ng-click="delete(profile_form)" >Eliminar</button>
+                                    <span class="clearfix"></span>
+                                </div>    
+                            </form>
+                        </uib-tab>      
+                    </uib-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,75 @@
+<div id="page-wrapper" class="color-pages">
+    <div>
+        <div class="col-lg-12 no-padding">
+            <div class="header-in">
+                <div class="text-muted item-menu">
+                    Multimedia
+                </div>
+                <div>
+                    <b>{{session.data_session.data.name}}</b>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row-relative">
+        <div class="col-lg-8  full-height">
+            <h2 class="text-center">Archivos Multimedia</h2>
+            <div class=" text-right">
+                <ui-select ng-model="ctrl.cat.selected" class="pull-left" theme="selectize" ng-disabled="ctrl.disabled" ng-show="level=='admin'" style="width: 300px;">
+                    <ui-select-match placeholder="Selecione una categoria">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="cat in response_categories">
+                        <span ng-bind-html="cat.name | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+                <button class="btn btn-success" ng-click="open_newimage()">Agregar</button>
+            </div>
+
+            <hr>
+            <div class="list-group add_20_margin" >
+                <div class="col-sm-3 height_img" ng-click="viewimg(img.id)" ng-repeat="img in response" style="display:table;">
+                    <div class="img-border" ng-show="img.path" style="display:table-cell; vertical-align:middle;">
+                        <img ng-src="{{img.path}}" class="img-responsive add-padding-10 tamano" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="step.first" class="col-lg-4 add_20_padding full-height tab-profile-user text-center">
+            <h4 class="header-gray">Debes seleccionar un archivo.</h4>
+            <img src="assets/icons/picture.svg" class="profile-not add_20_padding" alt="">
+        </div>
+        <div ng-show="step.second" hl-sticky=""  class="col-lg-4 add_20_padding full-height tab-profile-user">
+            <h2 class="no-margin header-gray text-center">Archivo</h2>
+            <div class="add_20_margin">
+                <div class="col-sm-12 text-center">
+                    <img ng-src="{{image_response.youtube_img}}" class="img-responsive col-sm-8 col-sm-offset-2" alt="" ng-show="image_response.youtube_img">
+                    <img ng-src="{{image_response.path}}" class="img-responsive col-sm-8 col-sm-offset-2" alt="" ng-show="image_response.path">
+                    <div class="add-padding-10 col-sm-12" >
+                        <a ng-show="image_response.type == 'img'" class="btn btn-sm btn-default" style="margin-top:3%;" target="_blank" href="{{image_response.url_origin}}/download?id={{image_response.id}}&act=download"><i class="fa fa-download"></i> Descargar</a>
+
+                        <a ng-show="image_response.type == 'pdf'" class="btn btn-sm btn-default" style="margin-top:3%;" target="_blank" href="{{image_response.pdf_url}}"><i class="fa fa-download"></i> Descargar</a>
+                    </div>
+                </div>
+                <div class="col-sm-12 add_20_padding">
+                    <form class="add_20_padding" ng-submit="update_img()">
+                        <div class="form-group">
+                            <label for="name">Nombre:</label>
+                            <input type="text" class="form-control" ng-model="image_response.name" id="name">
+                            <p class="text-muted">Ingresa tu nombre, el cual sera usado en todo el sistema.</p>
+                        </div>
+                        <div class="form-group" ng-show="level == 'admin'">
+                            <label for="level">Categoria:</label>
+                            <select class="form-control" id="level"  ng-options="cat.id as cat.name for cat in response_categories" ng-model="image_response.id_categories"></select>
+                            <p class="text-muted">Categoria de la imagen </p>
+                        </div>
+                         <button type="submit" class="btn btn-primary pull-right" style="margin-left: 1px;" ng-click="save()">Guardar</button>
+                        
+                        <button type="button" ng-click="delete_img(image_response.id)" class="btn btn-danger pull-right">Eliminar</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

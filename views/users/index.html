@@ -1,0 +1,126 @@
+<div id="page-wrapper" class="color-pages">    
+    <!-- /.row -->
+    <div>
+        <div class="col-lg-12 no-padding">
+            <div class="header-in">
+                <div class="text-muted item-menu">
+                    Usuarios
+                </div>
+                <div>
+                    <b>{{session.data_session.data.name}}</b>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row-relative">
+        <div class="col-lg-8 full-height">
+            <h2 class="text-center">Usuarios</h2>
+            <div class="text-right">
+                <button class="btn btn-success" ng-click="open_newuser()">Agregar</button>
+            </div>
+
+            <hr>
+            <div class="list-group add_20_margin" >
+                <a href="javascript:" ng-click="profile(usr.id)" class="list-group-item list-group-item-action flex-column align-items-start col-sm-12 " ng-repeat="usr in response.data" ng-show="level != 'admin' ? usr.categorie.id == cat_user : usr.categorie.id != cat_user">
+                    <div class="col-sm-1">
+                        <img ng-src="{{usr.avatar}}" alt="" class="img-circle" ng-show="usr.avatar">
+                        <img ng-src="assets/icons/default-pupil-profile.png" alt="" class="img-circle" ng-show="!usr.avatar">
+                    </div>
+                    <div class="col-sm-11">
+                        <p class="mb-1 letra">{{usr.name}}</p>
+                        <small class="small_user margin_left_2">{{ nivel[usr.level] }} {{ usr.categorie.name }}</small>
+                       
+                    </div>
+
+                </a>
+            </div>
+        </div>
+        <div ng-show="step.first" class="col-lg-4 add_20_padding full-height tab-profile-user text-center">
+            <h4 class="header-gray">Debes seleccionar un usuario.</h4>
+            <img src="assets/icons/worker.svg" class="profile-not add_20_padding" alt="">
+        </div>
+        <div ng-show="step.second" class="col-lg-4 add_20_padding full-height tab-profile-user">
+            <h2 class="no-margin header-gray">Perfil</h2>
+            <div class="add_20_margin">
+                <div class="col-sm-12 text-center">
+                    <div class="col-sm-6">
+                        <img ng-src="{{profile_form.avatar}}" class="img-circle-100" alt="" ng-show="profile_form.avatar">
+                        <img class="img-circle-100" alt=""
+                             ng-src="assets/icons/default-pupil-profile.png" ng-show="!profile_form.avatar">
+                    </div>
+                    <div class="col-sm-6 text-left">
+                        <label for="form_upload">Actualizar imagen</label>
+                        <div class="button btn btn-default" id="form_upload" ngf-select="upload($files)" ngf-multiple="true">Examinar...</div>
+                        <p class="text-muted">Tamaño maximo permitido 2MB</p>
+                    </div>
+                </div>
+                <div class="col-sm-12 add_20_padding">
+                    <uib-tabset active="active">
+                        <uib-tab index="0" heading="Info">
+                            <form class="add_20_padding" ng-submit="update_user()">
+                                <div class="form-group">
+                                    <label for="name">Nombre:</label>
+                                    <input type="text" class="form-control" ng-model="profile_form.name" id="name" />
+                                    <p class="text-muted">Ingresa tu nombre, el cual sera usado en todo el sistema.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name">Apellido:</label>
+                                    <input type="text" class="form-control" ng-model="profile_form.last_name" id="last_name" />
+                                    <p class="text-muted">Ingresa tu nombre, el cual sera usado en todo el sistema.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="uuid">DNI:</label>
+                                    <input type="text"  class="form-control" ng-model="profile_form.uuid" id="uuid" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" ng-model="profile_form.email" id="email" />
+                                    <p class="text-muted">Este email es unico en el sistema.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Teléfono:</label>
+                                    <input type="text"  class="form-control" ng-model="profile_form.phone" id="phone" />
+                                    <p class="text-muted">Este teléfono es unico en el sistema.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Dirección:</label>
+                                    <textarea type="text"  class="form-control" ng-model="profile_form.address" id="address">
+                                    </textarea>
+                                    <p class="text-muted">Dirección de residencia.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bod">Fecha de nacimiento:</label>
+                                    <input type="date"  class="form-control" ng-model="profile_form.bod" id="bod" />
+                                </div>                                
+                                 <div class="form-group">
+                                    <label for="level">Nivel:</label>
+                                    <select ng-model="profile_form.level" class="form-control">
+                                        <option ng-selectd="profile_form.level == 'user'" value="user">Alumno</option>
+                                        <option ng-selectd="profile_form.level == 'manager'" value="manager">Profesor</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" ng-show="level == 'admin'">
+                                    <label for="categories">Categorias:</label>
+                                    <select id="categories" class="form-control" ng-model="profile_form.categorie" ng-options="c.id as c.name for c in cat.data">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-info" ng-click="open_password(profile_form.id)">Restablecer Contraseña</button>
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary pull-right" style="margin-left:5px;">Guardar</button>
+                                    <button type="button" class="btn btn-danger pull-right" ng-click="delete(profile_form)" >Eliminar</button>
+                                    <span class="clearfix"></span>
+                                </div>    
+                            </form>
+                        </uib-tab>      
+                    </uib-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

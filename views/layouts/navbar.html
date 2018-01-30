@@ -1,0 +1,24 @@
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-header logo-canva">
+            <a href="#!/home">
+                Panel-Backend
+            </a>    
+        </div>
+        <ul ng-if="session.login" class="nav navbar-top-links navbar-right menu">
+            <li class="dropdown pull-right">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        <a style="color:black !important;" href="javascript:void(0)" ng-click="logout()">
+                            <i class="fa fa-sign-out fa-fw"></i> 
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </li>    
+        </ul>
+    </nav>
+</div>    

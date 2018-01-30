@@ -1,0 +1,103 @@
+ <div id="page-wrapper">
+    <div>
+        <div class="col-lg-12 no-padding">
+            <div class="header-in">
+                <div class="text-muted item-menu">
+                    Inicio
+                </div>
+                <div>
+                    <b>{{session.data_session.data.name}}</b>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="col-md-12 padding-home home-color">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">Últimos usuarios registrados</div>
+                    <div class="panel-body width_home home-scroll">
+                        <div class="list-group " >
+                            <a href="javascript:" ng-click="" class="list-group-item list-group-item-action flex-column align-items-start col-sm-12 " ng-repeat="usr in users.data | limitTo: limit" ng-show="level != 'admin' ? usr.categorie.id == cat_user : usr.categorie.id != cat_user">
+                                <div class="col-sm-1 ">
+                                    <img ng-src="{{usr.avatar}}" alt="" class="img-circle" ng-show="usr.avatar">
+                                    <img ng-src="assets/icons/default-pupil-profile.png" alt="" class="img-circle" ng-show="!usr.avatar">
+                                </div>
+                                <div class="col-sm-11">
+                                    <p class="mb-1 letra margin_left_user">{{usr.name}}</p>
+                                    <small class="small_user margin_left_user">{{ nivel[usr.level] }} {{ usr.categorie.name }}</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+            <div class="col-md-6" ng-show="level != 'admin'">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">Últimas Notificaciones</div>
+                    <div class="panel-body width_home home-scroll">
+                        <div class="list-group " >
+                            <a href="javascript:" ng-click="" class="list-group-item list-group-item-action flex-column align-items-start col-sm-12 " ng-repeat="noti in noti.data | limitTo: limit">
+                                <div class="col-sm-11">
+                                    <p class="mb-1 letra " style="display:inline;">
+                                        <strong>
+                                            {{ noti.title }}
+                                        </strong>
+                                    </p>
+                                    <small class="pull-right"> 
+                                        {{ noti.created_at }} 
+                                    </small>
+                                    <span class="clearfix"></span>
+                                    <p style="margin-left: 2%; font-size: 120%;">
+                                        {{ noti.message }}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">Últimas Clases</div>
+                    <div class="panel-body width_home home-scroll">
+                       <div class="list-group " >
+                            <a href="javascript:" ng-click="" class="list-group-item list-group-item-action flex-column align-items-start col-sm-12 " ng-repeat="item in item.data | limitTo: limit">
+                                <div class="col-sm-1">
+                                    <img ng-src="{{item.image.path}}" alt="" class="img-circle" ng-show="item.image.path">
+                                    <img ng-src="assets/icons/default-pupil-profile.png" alt="" class="img-circle" ng-show="!item.image.path">
+                                </div>
+                                <div class="col-sm-11 class_item ">
+                                    <p class="mb-1 letra margin_left_user">{{item.title}}</p>
+                                    <small class="mb-1 small_user margin_left_user">Fecha de inicio: {{item.start_at}}</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                 </div>           
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">Últimos materiales multimedia subidos</div>                
+                    <div class="panel-body width_home home-scroll">
+                       <div class="list-group" >
+                            <a href="javascript:" ng-click="" class="list-group-item list-group-item-action flex-column align-items-start col-sm-12 " ng-repeat="img in media.data | limitTo: limit" ng-show="level != 'admin' ? img.id_categories == cat_user : img.id_categories != cat_user">
+                                <div class="col-sm-1 ">
+                                    <img ng-src="{{img.path}}" alt="" class="img-circle" ng-show="img.path">
+                                    <img ng-src="assets/icons/default-pupil-profile.png" alt="" class="img-circle" ng-show="!img.path">
+                                </div>
+                                <div class="col-sm-11 class_item ">
+                                    <p class="mb-1 letra margin_left_user">{{item.name}}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>    
+            </div>                                       
+        </div>
+    </div>
+
+</div>

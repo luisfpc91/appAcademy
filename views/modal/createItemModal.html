@@ -1,0 +1,50 @@
+<div class="modal-content">
+    <form ng-submit="create()">
+        <div class="modal-body">
+            <div>
+                <h3 class="modal-title text-center">Clase</h3>
+            </div>
+            <hr/>
+            <div class="col-sm-12 text-center form-group">
+                <div class="col-sm-6">
+                    <img class="img-circle-100" alt=""
+                         ng-src="{{i.img}}" ng-show="i.img">
+                    <img class="img-circle-100" alt=""
+                         ng-src="assets/icons/default-pupil-profile.png" ng-show="!i.img">
+                </div>
+                <div class="col-sm-6 text-left">
+                    <label for="form_upload">Agregar imagen</label>
+                    <form action="" id="form_upload" class="ng-pristine ng-valid">
+                        <div class="button btn btn-default" ngf-select="upload_post($files)" ngf-multiple="true" class="upload">Examinar...</div>
+                        <p class="text-muted">Tamaño maximo permitido 2MB</p>
+                    </form>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title">Título de la clase:</label>
+                <input id="title" type="text" ng-model="i.title" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="Título" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción:</label>
+                <textarea id="description" ng-model="i.description" cols="30" rows="3" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="descripción.." ></textarea>
+            </div>            
+            <div class="form-group" ng-show="level == 'admin'">
+                <label for="id_cat">Categoria:</label>
+                <select id="id_cat" ng-model="i.id_cat" class="form-control" required >
+                    <option ng-repeat="item in cat.data" ng-show="level != 'admin' ? item.id == cat_user : item.id != cat_user" value="{{item.id}}">{{item.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="start_at">Fecha de Inicio:</label>
+                <input type="date" ng-model="i.start_at" class="form-control" placeholder="Fecha" >
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="closeThisDialog(0)"
+                        data-dismiss="modal">Cerrar
+                </button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+
+    </form>
+</div>
